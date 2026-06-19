@@ -23,8 +23,9 @@
   --ink-muted:    #525252;       /* texto terciario / metadatos (AA sobre --bg) */
   --line:         #e5e5e5;       /* bordes sutiles */
   --line-strong:  #d4d4d4;       /* bordes con más presencia */
-  --accent:       #1e3a8a;       /* azul medianoche */
-  --accent-strong:#172554;       /* acento en hover / estados activos */
+  --accent:        #db7851;      /* terracota de marca (logo); solo gráficos/decorativo */
+  --accent-ink:    #b5532f;      /* terracota accesible para texto y enlaces (AA sobre --bg) */
+  --accent-strong: #8f3f22;      /* acento en hover / estados activos */
 
   /* Tipografía */
   --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto,
@@ -65,7 +66,7 @@ svg { display: block; max-width: 100%; height: auto; }
 
 /* ---- Enlaces ---- */
 a {
-  color: var(--accent);
+  color: var(--accent-ink);
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 2px;
@@ -75,7 +76,7 @@ a:hover { color: var(--accent-strong); }
 
 /* Foco visible y coherente para accesibilidad por teclado. */
 :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--accent-ink);
   outline-offset: 2px;
   border-radius: 2px;
 }
@@ -129,15 +130,16 @@ a:hover { color: var(--accent-strong); }
   min-height: 4.5rem;
 }
 
-.wordmark {
-  font-size: 1.0625rem;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  color: var(--ink);
+.brand {
+  display: inline-flex;
+  align-items: center;
   text-decoration: none;
-  white-space: nowrap;
 }
-.wordmark:hover { color: var(--ink); }
+.brand img {
+  display: block;
+  height: 2rem;            /* 32px */
+  width: auto;
+}
 
 /* Navegación */
 .site-nav { display: flex; }
@@ -265,7 +267,7 @@ p:last-child { margin-bottom: 0; }
   gap: 0.4rem;
   font-weight: 500;
   text-decoration: none;
-  color: var(--accent);
+  color: var(--accent-ink);
 }
 .cta-link::after {
   content: "\2192";              /* → */
@@ -373,7 +375,8 @@ p:last-child { margin-bottom: 0; }
   color: var(--ink-muted);
   margin-bottom: 0.875rem;
 }
-.footer-col .wordmark { display: inline-block; margin-bottom: 0.625rem; }
+.footer-col .brand { display: inline-flex; margin-bottom: 0.875rem; }
+.footer-col .brand img { height: 2.25rem; }   /* 36px */
 .footer-col p { color: var(--ink-soft); margin-bottom: 0.25rem; }
 .footer-links {
   list-style: none;
@@ -431,6 +434,7 @@ p:last-child { margin-bottom: 0; }
   }
   .js .nav-list li:last-child a { border-bottom: none; }
 
+  .site-header .brand img { height: 1.875rem; }   /* 30px */
   .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
   .data-table th { width: 9rem; padding-right: 1rem; }
   .section { padding-block: 2.75rem; }

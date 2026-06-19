@@ -18,11 +18,11 @@ El contenido está en español; los nombres de archivo y las rutas están en ing
 ├── terms.html          → /terms       (términos de uso)
 ├── sitemap.xml
 ├── robots.txt
-├── favicon.ico         (16/32/48 px)
-├── favicon.svg         (vectorial, escalable)
+├── favicon.ico         (16/32/48 px, derivado de la marca circular)
 ├── apple-touch-icon.png (180×180)
 ├── README.md
 └── assets/
+    ├── logo.png        (logo horizontal de marca: marca circular + "MARZ LABS")
     ├── styles.css      (hoja de estilos única)
     ├── menu.js         (menú móvil, mejora progresiva)
     ├── og-image.png    (1200×630, tarjeta social)
@@ -45,9 +45,11 @@ El contenido está en español; los nombres de archivo y las rutas están en ing
   400–700) servido desde el mismo dominio, con `preload` y `font-display: swap`. No hay peticiones a
   Google Fonts ni a terceros, lo que mantiene la privacidad y el rendimiento. El subconjunto *latin*
   (U+0000–00FF) cubre todos los caracteres del español (á, é, í, ó, ú, ñ, ü, ¿, ¡).
-- **Color de acento: azul medianoche `#1E3A8A`.** Definido como la variable `--accent` en
-  `assets/styles.css`. Para cambiarlo (p. ej. al verde técnico `#064E3B`), edite `--accent` y
-  `--accent-strong`, y regenere los assets (ver más abajo).
+- **Color de acento: terracota de marca `#db7851`** (tomado del logo). Por accesibilidad, el
+  terracota brillante solo se usa en gráficos/decorativo (`--accent`); para texto y enlaces se usa
+  un terracota más oscuro `#b5532f` (`--accent-ink`, contraste AA ≈ 4.7:1 sobre el fondo) y `#8f3f22`
+  para hover (`--accent-strong`). Las tres variables están en `assets/styles.css`. Si se cambia la
+  identidad de marca, edítelas y regenere los assets (ver más abajo).
 - **Sin analítica ni cookies.** El sitio no instala cookies ni carga scripts de seguimiento.
 
 ## Vista previa local
@@ -90,16 +92,17 @@ Si el proveedor permite cabeceras personalizadas:
 
 ## Regenerar iconos y la imagen Open Graph
 
-Los binarios (`favicon.ico`, `apple-touch-icon.png`, `assets/og-image.png`) se generan con un script
-de Python + Pillow. Si cambia el color de acento o el logotipo, edite los valores al inicio del
-script y vuelva a ejecutarlo:
+Los binarios (`favicon.ico`, `apple-touch-icon.png`, `assets/og-image.png`) se derivan de
+`assets/logo.png` con un script de Python + Pillow. El favicon y el apple-touch-icon usan la marca
+circular (recortada del logo) y la imagen Open Graph usa el logo completo. Si se reemplaza el logo o
+se cambia el color de acento, edite los valores al inicio del script y vuelva a ejecutarlo:
 
 ```bash
 python3 scripts/gen_assets.py
 ```
 
 > El script de generación se incluye en `scripts/gen_assets.py`. Requiere `Pillow`
-> (`pip install Pillow`). `favicon.svg` se edita a mano.
+> (`pip install Pillow`).
 
 ## Accesibilidad y SEO
 
