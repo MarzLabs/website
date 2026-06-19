@@ -1,0 +1,118 @@
+# marzlabs.tech
+
+Sitio web corporativo de **MARZ LABS, S.A.S.** — un sitio institucional, estático y sobrio
+que identifica a la empresa como entidad legal y enlaza a sus productos (actualmente
+[Fiscaliza.me](https://fiscaliza.me)).
+
+El contenido está en español; los nombres de archivo y las rutas están en inglés por convención.
+
+## Estructura
+
+```
+/
+├── index.html          → /            (landing)
+├── products.html       → /products    (productos)
+├── company.html        → /company     (empresa)
+├── contact.html        → /contact     (contacto)
+├── privacy.html        → /privacy     (política de privacidad)
+├── terms.html          → /terms       (términos de uso)
+├── sitemap.xml
+├── robots.txt
+├── favicon.ico         (16/32/48 px)
+├── favicon.svg         (vectorial, escalable)
+├── apple-touch-icon.png (180×180)
+├── README.md
+└── assets/
+    ├── styles.css      (hoja de estilos única)
+    ├── menu.js         (menú móvil, mejora progresiva)
+    ├── og-image.png    (1200×630, tarjeta social)
+    └── fonts/
+        └── inter-latin.woff2  (Inter variable, subconjunto latin, auto-alojada)
+```
+
+## Stack y decisiones técnicas
+
+- **HTML estático + CSS plano, sin dependencias en runtime.** No hay framework de JS ni backend.
+  El único JavaScript es `assets/menu.js` (~1 KB): activa el menú hamburguesa en móvil como
+  *mejora progresiva*. Sin JS, la navegación sigue siendo visible y funcional.
+- **Sin Tailwind por CDN.** La especificación sugería Tailwind vía CDN «para empezar», pero el
+  *Play CDN* de Tailwind inyecta un compilador en el navegador (mucho JS, render en cliente) y es
+  incompatible con el objetivo de Lighthouse 100/100 en Performance. Para 6 páginas simples se optó
+  por CSS plano con tokens (variables CSS) en `assets/styles.css`: cero build, cero dependencias,
+  rendimiento máximo. Si en el futuro se prefiere Tailwind, conviene un build local con purga
+  (`tailwindcss -o assets/styles.css --minify`) en vez del CDN.
+- **Tipografía Inter auto-alojada.** Un único `.woff2` (subconjunto *latin*, eje de peso variable
+  400–700) servido desde el mismo dominio, con `preload` y `font-display: swap`. No hay peticiones a
+  Google Fonts ni a terceros, lo que mantiene la privacidad y el rendimiento. El subconjunto *latin*
+  (U+0000–00FF) cubre todos los caracteres del español (á, é, í, ó, ú, ñ, ü, ¿, ¡).
+- **Color de acento: azul medianoche `#1E3A8A`.** Definido como la variable `--accent` en
+  `assets/styles.css`. Para cambiarlo (p. ej. al verde técnico `#064E3B`), edite `--accent` y
+  `--accent-strong`, y regenere los assets (ver más abajo).
+- **Sin analítica ni cookies.** El sitio no instala cookies ni carga scripts de seguimiento.
+
+## Vista previa local
+
+No requiere build. Cualquier servidor estático sirve. Con Python:
+
+```bash
+cd marzlabs.tech
+python3 -m http.server 8080
+# abrir http://localhost:8080
+```
+
+> Nota: las rutas usan barras iniciales (`/products.html`, `/assets/...`), por lo que conviene
+> servir desde la raíz del proyecto y no abrir los `.html` con `file://`.
+
+## Despliegue
+
+El sitio es completamente estático: súbalo a cualquier hosting de archivos estáticos.
+
+- **Cloudflare Pages / Netlify / Vercel:** conecte el repositorio o arrastre la carpeta. Sin comando
+  de build; el directorio de salida es la raíz del proyecto.
+- **GitHub Pages:** publique la rama desde la raíz (`/`). Funciona tal cual.
+- **Amazon S3 + CloudFront / Bucket estático:** suba todos los archivos respetando la estructura;
+  documento índice `index.html`.
+
+Apunte el dominio `marzlabs.tech` (y `www`, con redirección a la raíz) al proveedor elegido.
+Sirva todo por **HTTPS**. Todas las URL canónicas y los metadatos Open Graph ya apuntan a
+`https://marzlabs.tech`.
+
+### Cabeceras recomendadas (opcional)
+
+Si el proveedor permite cabeceras personalizadas:
+
+```
+# Caché larga para assets versionables
+/assets/*    Cache-Control: public, max-age=31536000, immutable
+# HTML siempre revalidado
+/*.html      Cache-Control: public, max-age=0, must-revalidate
+```
+
+## Regenerar iconos y la imagen Open Graph
+
+Los binarios (`favicon.ico`, `apple-touch-icon.png`, `assets/og-image.png`) se generan con un script
+de Python + Pillow. Si cambia el color de acento o el logotipo, edite los valores al inicio del
+script y vuelva a ejecutarlo:
+
+```bash
+python3 scripts/gen_assets.py
+```
+
+> El script de generación se incluye en `scripts/gen_assets.py`. Requiere `Pillow`
+> (`pip install Pillow`). `favicon.svg` se edita a mano.
+
+## Accesibilidad y SEO
+
+- Landmarks semánticos (`<header>`, `<nav>`, `<main>`, `<footer>`), enlace «Saltar al contenido»,
+  jerarquía de encabezados coherente (un solo `<h1>` por página) y foco visible por teclado.
+- Contraste de color verificado contra WCAG 2.1 AA (texto principal ~17:1, acento ~10:1 sobre el
+  fondo).
+- Cada página tiene `<title>` y `meta description` únicos, etiquetas Open Graph y Twitter Card,
+  `<link rel="canonical">`, favicons y `theme-color`.
+- `sitemap.xml` y `robots.txt` permiten la indexación completa. La home incluye datos estructurados
+  `Organization` (JSON-LD) para apoyar la verificación de la organización ante terceros.
+
+## Qué no incluye (por diseño)
+
+Blog, carreras, casos de estudio, newsletter, formularios de contacto (solo correo directo),
+chat/widget de soporte, multilenguaje y modo oscuro. Ver la especificación funcional.
