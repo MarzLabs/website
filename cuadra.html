@@ -6,7 +6,7 @@
   <script>document.documentElement.classList.add('js');</script>
 
   <title>Cuadra: ordene sus DTE y arme los libros de IVA — Marz Labs</title>
-  <meta name="description" content="Cuadra es una aplicación de escritorio de Marz Labs para contadores de El Salvador: ordena los DTE de cada empresa y prepara los libros y anexos de la declaración de IVA (F07).">
+  <meta name="description" content="Cuadra es una aplicación de escritorio de Marz Labs para contadores de El Salvador: descarga los DTE del correo, los ordena, consulta su estado en Hacienda y prepara los libros y anexos de la declaración de IVA (F07).">
   <link rel="canonical" href="https://marzlabs.tech/cuadra.html">
 
   <!-- Open Graph -->
@@ -14,7 +14,7 @@
   <meta property="og:site_name" content="Marz Labs">
   <meta property="og:locale" content="es_ES">
   <meta property="og:title" content="Cuadra: ordene sus DTE y arme los libros de IVA — Marz Labs">
-  <meta property="og:description" content="Aplicación de escritorio para contadores de El Salvador: ordena los DTE y prepara los libros y anexos de IVA (F07). Un mes de prueba gratis.">
+  <meta property="og:description" content="Aplicación de escritorio para contadores de El Salvador: descarga los DTE del correo, los ordena, consulta su estado en Hacienda y prepara los libros y anexos de IVA (F07). Un mes de prueba gratis.">
   <meta property="og:url" content="https://marzlabs.tech/cuadra.html">
   <meta property="og:image" content="https://marzlabs.tech/assets/og-image.png">
   <meta property="og:image:width" content="1200">
@@ -24,7 +24,7 @@
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Cuadra: ordene sus DTE y arme los libros de IVA — Marz Labs">
-  <meta name="twitter:description" content="Aplicación de escritorio para contadores de El Salvador: ordena los DTE y prepara los libros y anexos de IVA (F07). Un mes de prueba gratis.">
+  <meta name="twitter:description" content="Aplicación de escritorio para contadores de El Salvador: descarga los DTE del correo, los ordena, consulta su estado en Hacienda y prepara los libros y anexos de IVA (F07). Un mes de prueba gratis.">
   <meta name="twitter:image" content="https://marzlabs.tech/assets/og-image.png">
 
   <!-- Iconos -->
@@ -48,7 +48,7 @@
     "operatingSystem": "Windows 10, Windows 11, macOS 13",
     "url": "https://marzlabs.tech/cuadra.html",
     "inLanguage": "es",
-    "description": "Cuadra es una aplicación de escritorio de Marz Labs para contadores de El Salvador: ordena los DTE de cada empresa y prepara los libros y anexos de la declaración de IVA (F07).",
+    "description": "Cuadra es una aplicación de escritorio de Marz Labs para contadores de El Salvador: descarga los DTE del correo, los ordena, consulta su estado en Hacienda y prepara los libros y anexos de la declaración de IVA (F07).",
     "publisher": { "@type": "Organization", "name": "MARZ LABS, S.A.S.", "url": "https://marzlabs.tech" },
     "offers": { "@type": "Offer", "price": "15.00", "priceCurrency": "USD", "url": "https://marzlabs.gumroad.com/l/cuadra", "description": "Suscripción mensual con un mes de prueba gratis" }
   }
@@ -85,7 +85,7 @@
         </nav>
         <h1>Cuadra</h1>
         <p class="lead">Ordene sus facturas electrónicas y arme los libros de IVA en minutos.</p>
-        <p>Cuadra es una aplicación de escritorio para contadores de El Salvador que trabajan con Documentos Tributarios Electrónicos (DTE). Hace en minutos el trabajo de cada mes: ordenar los JSON y PDF de cada empresa y preparar los libros y los anexos de la declaración de IVA.</p>
+        <p>Cuadra es una aplicación de escritorio para contadores de El Salvador que trabajan con Documentos Tributarios Electrónicos (DTE). Hace en minutos el trabajo de cada mes: bajar del correo los documentos de cada empresa, ordenarlos, comprobar su estado en Hacienda y preparar los libros y los anexos de la declaración de IVA.</p>
         <p>Disponible para Windows y macOS, con un mes de prueba gratis.</p>
         <p class="product-actions">
           <a class="button" href="https://marzlabs.gumroad.com/l/cuadra" rel="noopener">Probar gratis un mes</a>
@@ -98,6 +98,16 @@
         <h2>Funcionalidades</h2>
         <div class="feature-groups feature-groups--flush">
           <section class="feature-group">
+            <h3>Descargar del correo</h3>
+            <ul class="feature-list">
+              <li>Entra a su correo y guarda los JSON, PDF y ZIP que le llegaron como adjuntos en el mes que usted elija, listos para ordenar.</li>
+              <li>No marca los correos como leídos, no los mueve ni los borra.</li>
+              <li>Si vuelve a descargar, solo agrega los archivos nuevos.</li>
+              <li>Funciona con Gmail, Yahoo y otros correos con acceso IMAP. Su contraseña no se guarda.</li>
+            </ul>
+          </section>
+
+          <section class="feature-group">
             <h3>Ordenar documentos</h3>
             <ul class="feature-list">
               <li>Junta cada JSON con su PDF, aunque tengan nombres distintos.</li>
@@ -106,6 +116,16 @@
               <li>Crea un reporte en Excel y otro para imprimir.</li>
               <li>Primero le muestra una simulación: no se toca ningún archivo hasta que usted lo aprueba.</li>
               <li>Nunca borra ni reemplaza archivos, y todo se puede deshacer.</li>
+            </ul>
+          </section>
+
+          <section class="feature-group">
+            <h3>Estado en Hacienda</h3>
+            <ul class="feature-list">
+              <li>Consulta cada documento en Hacienda y le dice si está transmitido, con observaciones, ajustado, invalidado o rechazado.</li>
+              <li>Le señala los documentos que el emisor invalidó después de enviarlos: no son deducibles ni deben declararse.</li>
+              <li>Compara el sello del JSON con el que tiene Hacienda, para saber si el archivo es el que se transmitió.</li>
+              <li>Sirve con una carpeta de JSON o con una lista de códigos copiada de Excel, y guarda el resultado en Excel.</li>
             </ul>
           </section>
 
@@ -122,8 +142,10 @@
             <h3>Pensada para el despacho contable</h3>
             <ul class="feature-list">
               <li>Maneje todas las empresas que lleva desde una sola app.</li>
+              <li>Todo queda en una carpeta de trabajo: una carpeta por empresa y, dentro, una por mes.</li>
               <li>Sus documentos se quedan en su computadora: la app no los sube a ningún servidor.</li>
-              <li>Para Windows y macOS.</li>
+              <li>Le avisa cuando hay una versión nueva y la instala si usted acepta.</li>
+              <li>Para Windows y macOS, con tema claro u oscuro.</li>
             </ul>
           </section>
         </div>
@@ -133,7 +155,7 @@
     <section class="section">
       <div class="container">
         <h2>Precio y suscripción</h2>
-        <p>Un solo plan con acceso completo a las dos herramientas: Ordenar documentos, y Libros y anexos de IVA.</p>
+        <p>Un solo plan con acceso completo a las cuatro herramientas: Descargar del correo, Ordenar documentos, Estado en Hacienda, y Libros y anexos de IVA.</p>
         <table class="data-table">
           <caption class="visually-hidden">Precios de la suscripción a Cuadra</caption>
           <tbody>
@@ -168,7 +190,8 @@
     <section class="section">
       <div class="container">
         <h2>Requisitos</h2>
-        <p>Windows 10 u 11, o macOS 13 o posterior. La app necesita conectarse a internet de vez en cuando para confirmar la suscripción.</p>
+        <p>Windows 10 u 11, o macOS 13 o posterior. La app necesita conectarse a internet de vez en cuando para confirmar la suscripción, y también para descargar del correo y consultar el estado en Hacienda.</p>
+        <p>El estado de los documentos se consulta en el servicio de consulta pública de Hacienda y depende de que ese servicio esté disponible.</p>
         <p>La app prepara los libros y los anexos; la declaración es responsabilidad de quien la presenta.</p>
         <p class="product-actions">
           <span>¿Tiene preguntas?</span>
