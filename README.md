@@ -2,7 +2,7 @@
 
 Sitio web corporativo de **MARZ LABS, S.A.S.** — un sitio institucional, estático y sobrio
 que identifica a la empresa como entidad legal y enlaza a sus productos (actualmente
-[Fiscaliza.me](https://fiscaliza.me)).
+[Fiscaliza.me](https://fiscaliza.me) y [Cuadra](https://marzlabs.gumroad.com/l/cuadra)).
 
 El contenido está en español; los nombres de archivo y las rutas están en inglés por convención.
 
@@ -13,6 +13,7 @@ El contenido está en español; los nombres de archivo y las rutas están en ing
 ├── index.html          → /            (landing)
 ├── products.html       → /products    (índice de productos)
 ├── fiscaliza.html      → /fiscaliza   (página de producto: Fiscaliza.me)
+├── cuadra.html         → /cuadra      (página de producto: Cuadra)
 ├── company.html        → /company     (empresa)
 ├── contact.html        → /contact     (contacto)
 ├── privacy.html        → /privacy     (política de privacidad)
@@ -62,6 +63,9 @@ Cada producto tiene su propia página en la raíz y una tarjeta resumida en el �
 2. Agregue la tarjeta del producto en `products.html` y en `index.html`, con un enlace a la nueva
    página.
 3. Agregue la URL a `sitemap.xml`.
+
+Los precios de Cuadra están escritos a mano en `cuadra.html` (tabla de precios y JSON-LD): si
+cambian en Gumroad, actualícelos ahí.
 
 ## Vista previa local
 

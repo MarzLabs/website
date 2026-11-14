@@ -434,6 +434,11 @@ p:last-child { margin-bottom: 0; }
 .data-table tr:last-child th,
 .data-table tr:last-child td { border-bottom: none; }
 
+/* La tabla y la lista de características no traen margen inferior: separa el
+   bloque que las sigue (p. ej. tabla → lista → nota en la sección de precios). */
+.data-table + *,
+.feature-list + * { margin-top: 1.25rem; }
+
 /* ==========================================================================
    Bloques de contacto / direcciones
    ========================================================================== */
