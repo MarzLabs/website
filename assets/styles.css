@@ -276,6 +276,55 @@ p:last-child { margin-bottom: 0; }
 .cta-link:hover { color: var(--accent-strong); }
 .cta-link:hover::after { transform: translateX(3px); }
 
+/* ---- Enlace con aspecto de botón (llamada a la acción principal) ---- */
+.button {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.7rem 1.25rem;
+  border-radius: 8px;
+  background: var(--ink);
+  color: #fff;
+  font-weight: 500;
+  line-height: 1.3;
+  text-decoration: none;
+  transition: background-color 0.15s ease;
+}
+.button:hover {
+  background: var(--accent-strong);
+  color: #fff;
+}
+
+/* Fila de acciones (botón + enlaces secundarios). */
+.product-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.25rem;
+  margin-top: 1.75rem;
+}
+
+/* ---- Miga de pan (ruta de navegación sobre el h1) ---- */
+.breadcrumb {
+  font-size: 0.875rem;
+  color: var(--ink-muted);
+  margin-bottom: 1rem;
+}
+.breadcrumb ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+/* Separador decorativo; el texto alternativo vacío lo oculta a lectores de pantalla. */
+.breadcrumb li + li::before {
+  content: "/";
+  content: "/" / "";
+  margin-right: 0.5rem;
+  color: var(--line-strong);
+}
+
 /* ==========================================================================
    Tarjetas de producto
    ========================================================================== */
@@ -292,6 +341,7 @@ p:last-child { margin-bottom: 0; }
   border-radius: 12px;
   padding: 1.75rem;
 }
+.product-card h2,
 .product-card h3 { margin-bottom: 0.625rem; }
 .product-card p { color: var(--ink-soft); }
 .product-card .card-cta { margin-top: 1.25rem; }
@@ -322,6 +372,12 @@ p:last-child { margin-bottom: 0; }
   margin-top: 1.75rem;
   padding-top: 1.75rem;
   border-top: 1px solid var(--line);
+}
+/* Variante sin separador superior, para grupos que van directo en una sección. */
+.feature-groups--flush {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
 }
 .feature-group h3 { margin-bottom: 0.5rem; }
 .feature-group > p { color: var(--ink-soft); margin-bottom: 0.625rem; }

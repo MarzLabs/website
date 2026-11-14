@@ -11,7 +11,8 @@ El contenido está en español; los nombres de archivo y las rutas están en ing
 ```
 /
 ├── index.html          → /            (landing)
-├── products.html       → /products    (productos)
+├── products.html       → /products    (índice de productos)
+├── fiscaliza.html      → /fiscaliza   (página de producto: Fiscaliza.me)
 ├── company.html        → /company     (empresa)
 ├── contact.html        → /contact     (contacto)
 ├── privacy.html        → /privacy     (política de privacidad)
@@ -37,7 +38,7 @@ El contenido está en español; los nombres de archivo y las rutas están en ing
   *mejora progresiva*. Sin JS, la navegación sigue siendo visible y funcional.
 - **Sin Tailwind por CDN.** La especificación sugería Tailwind vía CDN «para empezar», pero el
   *Play CDN* de Tailwind inyecta un compilador en el navegador (mucho JS, render en cliente) y es
-  incompatible con el objetivo de Lighthouse 100/100 en Performance. Para 6 páginas simples se optó
+  incompatible con el objetivo de Lighthouse 100/100 en Performance. Para un puñado de páginas simples se optó
   por CSS plano con tokens (variables CSS) en `assets/styles.css`: cero build, cero dependencias,
   rendimiento máximo. Si en el futuro se prefiere Tailwind, conviene un build local con purga
   (`tailwindcss -o assets/styles.css --minify`) en vez del CDN.
@@ -51,6 +52,16 @@ El contenido está en español; los nombres de archivo y las rutas están en ing
   para hover (`--accent-strong`). Las tres variables están en `assets/styles.css`. Si se cambia la
   identidad de marca, edítelas y regenere los assets (ver más abajo).
 - **Sin analítica ni cookies.** El sitio no instala cookies ni carga scripts de seguimiento.
+
+## Agregar un producto
+
+Cada producto tiene su propia página en la raíz y una tarjeta resumida en el índice:
+
+1. Cree `<producto>.html` en la raíz copiando `fiscaliza.html` y ajuste el `<head>` (título,
+   descripción, canonical, Open Graph, Twitter y JSON-LD), la miga de pan y el contenido.
+2. Agregue la tarjeta del producto en `products.html` y en `index.html`, con un enlace a la nueva
+   página.
+3. Agregue la URL a `sitemap.xml`.
 
 ## Vista previa local
 
